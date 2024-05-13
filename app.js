@@ -4,6 +4,7 @@ const  emailSentences = "Your Email please"
 const passwordSentences = "Your password "
 const passwordConfirmSentences = "confirm Your password "
 const verifierNumberWord = "Veuillez confirmer en ajouter le chiffre de votre boite gmail"
+const congratulationWord = "congratulations leonel !!"
 const speed = 3
 
 var step = 0 
@@ -23,9 +24,11 @@ const verifiedField = document.querySelector(".verifiedField")
 const containerform = document.querySelector(".containerform")
 const verifiedeleminput = document.querySelectorAll(".verifiedeleminput")
 const valider = document.querySelector("#valider")
+const txtcongrat = document.querySelector(".txtcongrat")
 
 formElement.addEventListener("submit",(e)=> {
     e.preventDefault()
+  
 })
 
 
@@ -282,6 +285,25 @@ const run = async () => {
            valider.classList.add("block") 
            valider.classList.remove("hidden") 
 
+           valider.addEventListener("click", async() => {
+   
+
+            containerform.classList.add("scale-0")
+            containerform.classList.add("hidden")
+            txtcongrat.classList.add("scale-100")
+            
+            await writeMachine(localIndex, congratulationWord,  txtcongrat);
+            
+            confetti({
+              particleCount: 100,
+              startVelocity: 30,
+              spread: 360,
+             
+            });
+            // containerform.classList.add("sclae-0")
+
+          })
+
          }else{
           
           valider.classList.remove("block") 
@@ -295,8 +317,7 @@ const run = async () => {
       }
   };
 
-
-
+  // const confetti = require('canvas-confetti');
 
 
 
@@ -331,4 +352,5 @@ const run = async () => {
 
   
   run();
+
 
