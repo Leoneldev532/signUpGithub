@@ -279,6 +279,12 @@ const run = async () => {
      
         verifiedeleminput.forEach((input) => {
           input.addEventListener('input', () => {
+            const value = input.value;
+            const numericOnly = value.replace(/[^0-9]/g, "");
+
+            if (value !== numericOnly) {
+              input.value = numericOnly;
+            }
             // Vérifier si tous les champs input contiennent une valeur
             const tousRemplis = Array.from(inputs).every((input) => input.value.trim() !== '');
          if(tousRemplis){
